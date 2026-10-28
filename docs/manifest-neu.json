@@ -1,0 +1,11 @@
+{
+  "name": "ESPCam (Neuinstallation)",
+  "version": "__VERSION__",
+  "new_install_prompt_erase": false,
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [{ "path": "espcam-komplett.bin", "offset": 0 }]
+    }
+  ]
+}

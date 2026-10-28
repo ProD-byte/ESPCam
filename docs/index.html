@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ESPCam &ndash; Online-Flasher</title>
+<meta name="theme-color" content="#0d0f13">
+<script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+<style>
+  :root{--bg:#0d0f13;--karte:#161a20;--karte2:#1c2129;--rand:#262c35;--rand2:#323a45;--text:#eef1f5;--leise:#8b95a3;--akzent:#4f9cff;--akzent2:#7c6cff;--gut:#3ccf6e;--warn:#f0a030}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;color:var(--text);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+       background:radial-gradient(900px 500px at 0% -10%,#1a2440 0%,transparent 60%),radial-gradient(800px 500px at 110% 0%,#251c40 0%,transparent 55%),var(--bg);padding:28px 16px}
+  .rahmen{max-width:620px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+  .kopf{display:flex;align-items:center;gap:16px}
+  .kopf h1{margin:0;font-size:28px}
+  .kopf p{margin:2px 0 0;color:var(--leise)}
+  .logo{width:58px;height:58px;border-radius:17px;flex:none;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--akzent),var(--akzent2));box-shadow:0 12px 30px -12px var(--akzent)}
+  .logo svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .karte{background:linear-gradient(180deg,var(--karte2),var(--karte));border:1px solid var(--rand);border-radius:20px;padding:22px;box-shadow:0 14px 40px -20px #000}
+  h2{margin:0 0 12px;font-size:17px}
+  ol{margin:0;padding-left:22px;color:var(--leise)} ol li{margin:6px 0} ol b{color:var(--text)}
+  .knopf{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+  esp-web-install-button button[slot=activate]{height:56px;padding:0 34px;border:0;border-radius:16px;color:#fff;font:650 18px system-ui,sans-serif;cursor:pointer;
+       background:linear-gradient(90deg,var(--akzent),var(--akzent2));box-shadow:0 10px 26px -10px #4f9cff}
+  .wahl{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;text-align:left}
+  @media(max-width:560px){.wahl{grid-template-columns:1fr}}
+  .option{display:flex;flex-direction:column;gap:10px;padding:16px;border-radius:16px;background:#12161c;border:1px solid var(--rand2)}
+  .option .titel{font-weight:700;font-size:17px}
+  .option p{margin:0;color:var(--leise);font-size:14px;flex:1}
+  .option p b{color:var(--text)}
+  .option esp-web-install-button button[slot=activate]{width:100%;height:50px;padding:0 14px;font-size:16px}
+  .option.loeschen{border-color:#5a2a2a;background:#1c1214}
+  .option.loeschen esp-web-install-button button[slot=activate]{background:linear-gradient(90deg,#c2413b,#a8326e);box-shadow:0 10px 26px -12px #ef5350}
+  .chip{display:inline-block;font:600 12px ui-monospace,monospace;padding:4px 10px;border-radius:999px;background:#1b2a44;color:#9cc4ff;border:1px solid #2d4a7a}
+  .warn{border-color:#5a4318;background:linear-gradient(180deg,#2a2112,#1e1910)}
+  .leise{color:var(--leise);font-size:14px}
+  a{color:var(--akzent)}
+  .merkmale{display:grid;grid-template-columns:1fr 1fr;gap:8px;color:var(--leise);font-size:14px}
+  @media(max-width:520px){.merkmale{grid-template-columns:1fr}}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin:10px 0 4px}
+  td,th{padding:6px 8px;border-bottom:1px solid var(--rand);text-align:left}
+  th{color:var(--leise);font-weight:600}
+</style></head><body>
+<div class="rahmen">
+  <div class="kopf">
+    <div class="logo"><svg viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></div>
+    <div><h1>ESPCam</h1><p>Online-Flasher &middot; WLAN-Kamera direkt aus dem Browser aufspielen</p></div>
+  </div>
+
+  <div class="karte knopf">
+    <span class="chip">Version __VERSION__</span>
+    <div class="wahl">
+      <div class="option">
+        <div class="titel">&#128260; Update</div>
+        <p>Neue Firmware aufspielen &ndash; <b>gespeicherte WLANs bleiben erhalten.</b><br><span style="color:#f0a030">&#9888;&#65039; Bei der Frage &bdquo;Erase device?&ldquo; den Haken <b>nicht</b> setzen.</span></p>
+        <esp-web-install-button manifest="manifest-update.json">
+          <button slot="activate">&#9889; Update installieren</button>
+          <span slot="unsupported"><b>Dieser Browser kann das leider nicht.</b><br><span class="leise">Bitte Chrome oder Edge am PC/Mac verwenden.</span></span>
+          <span slot="not-allowed"><b>Nur &uuml;ber https m&ouml;glich.</b></span>
+        </esp-web-install-button>
+      </div>
+      <div class="option loeschen">
+        <div class="titel">&#129529; Neuinstallation</div>
+        <p>Speicher komplett l&ouml;schen und neu aufspielen &ndash; f&uuml;r <b>neue Kameras</b> oder wenn gar nichts mehr geht. <b>Gespeicherte WLANs sind danach weg.</b></p>
+        <esp-web-install-button manifest="manifest-neu.json">
+          <button slot="activate">&#128465;&#65039; L&ouml;schen &amp; neu installieren</button>
+          <span slot="unsupported"><b>Dieser Browser kann das leider nicht.</b></span>
+          <span slot="not-allowed"><b>Nur &uuml;ber https m&ouml;glich.</b></span>
+        </esp-web-install-button>
+      </div>
+    </div>
+    <span class="leise">Funktioniert mit Chrome und Edge am Computer &middot; Kamera per USB anschlie&szlig;en.</span>
+  </div>
+
+  <div class="karte">
+    <h2>So geht&rsquo;s</h2>
+    <ol>
+      <li>ESP32-CAM auf das <b>ESP32-CAM-MB</b>-Board (mit Micro-USB) stecken und per USB mit dem Computer verbinden.</li>
+      <li><b>&bdquo;Update installieren&ldquo;</b> oder <b>&bdquo;L&ouml;schen &amp; neu installieren&ldquo;</b> klicken und den Anschluss ausw&auml;hlen (z.&nbsp;B. &bdquo;USB-SERIAL CH340&ldquo;).</li>
+      <li>Klappt die Verbindung nicht: <b>IO0</b>-Taste am MB-Board gedr&uuml;ckt halten, kurz <b>RST</b> an der Kamera dr&uuml;cken, IO0 loslassen &ndash; dann nochmal versuchen.</li>
+      <li>Nach dem Aufspielen einmal <b>RST</b> dr&uuml;cken.</li>
+      <li>Mit dem Handy ins WLAN <b>&bdquo;ESPCam-Setup&ldquo;</b> gehen, dein WLAN antippen und das Passwort eingeben. Danach: <b>http://espcam.local</b></li>
+    </ol>
+  </div>
+
+  <div class="karte warn">
+    <h2>&#9888;&#65039; Ohne MB-Board (USB-Seriell-Adapter)</h2>
+    <p class="leise" style="margin:0 0 4px">Mit einem FTDI/CH340-Adapter so verdrahten und vor dem Flashen <b>GPIO0 mit GND verbinden</b>, dann Reset dr&uuml;cken. Nach dem Flashen die Br&uuml;cke wieder entfernen.</p>
+    <table>
+      <tr><th>Adapter</th><th>ESP32-CAM</th></tr>
+      <tr><td>5V</td><td>5V</td></tr>
+      <tr><td>GND</td><td>GND</td></tr>
+      <tr><td>TX</td><td>U0R</td></tr>
+      <tr><td>RX</td><td>U0T</td></tr>
+    </table>
+    <p class="leise" style="margin:8px 0 0">Stabile 5&nbsp;V mit mindestens 1&nbsp;A verwenden &ndash; sonst startet die Kamera mit &bdquo;Brownout&ldquo; immer wieder neu.</p>
+  </div>
+
+  <div class="karte">
+    <h2>Was die Kamera kann</h2>
+    <div class="merkmale">
+      <span>&#127909; Livestream im Browser (MJPEG)</span><span>&#128247; Fotos mit einem Klick speichern</span>
+      <span>&#128246; WLAN-Einrichtung per Handy</span><span>&#129504; Merkt sich bis zu 5 WLANs</span>
+      <span>&#127912; Aufl&ouml;sung bis 1600&times;1200</span><span>&#9728;&#65039; Helligkeit, Kontrast, S&auml;ttigung</span>
+      <span>&#128294; Blitz-LED schaltbar</span><span>&#128279; Stream f&uuml;r VLC &amp; Home Assistant</span>
+    </div>
+  </div>
+  <p class="leise" style="text-align:center">AI-Thinker ESP32-CAM &middot; gebaut mit PlatformIO &middot; <a href="https://github.com/ProD-byte/ESPCam">Quellcode auf GitHub</a> &middot; Online-Flasher: <a href="https://esphome.github.io/esp-web-tools/">ESP Web Tools</a></p>
+</div>
+<script>
+/* Flasher-Einstellungen immer frisch laden (nie aus dem Browser-Zwischenspeicher) */
+document.querySelectorAll('esp-web-install-button').forEach(function(b){ var m=b.getAttribute('manifest').split('?')[0]; b.setAttribute('manifest', m+'?t='+Date.now()); });
+</script>
+</body></html>
