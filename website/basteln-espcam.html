@@ -1,0 +1,56 @@
+<!--
+  ESPCam-Abschnitt für https://daveslab.de/basteln/ (WordPress, Block "Individuelles HTML").
+  Wird hinter dem Roboauto-Abschnitt (<section id="anleitung">…</section>) eingefügt.
+  Texte mit data-t werden vom Sprach-Skript der Seite übersetzt (Einträge unten).
+-->
+  <section class="dl-sec" id="espcam">
+    <div class="dl-wrap">
+      <h2 class="dl-h2 rv" data-t="cam_h2">ESPCam <span class="dl-grad">installieren</span></h2>
+      <p class="dl-sub rv"><span data-t="cam_sub">WLAN-Kamera mit Livebild im Browser – AI-Thinker ESP32-CAM per USB anschließen und direkt hier aufspielen.</span> <span id="dl-ver-cam"></span></p>
+      <div class="dl-flash">
+        <div class="dl-opt rv">
+          <h3 data-t="upd_h">🔄 Update</h3>
+          <p data-t="cam_upd_p">Neue Firmware aufspielen – <b>gespeicherte WLANs bleiben erhalten.</b></p>
+          <esp-web-install-button manifest="https://prod-byte.github.io/ESPCam/manifest-update.json">
+            <button slot="activate" data-t="upd_btn">⚡ Update installieren</button>
+            <span slot="unsupported" data-t="unsup"><b>Dieser Browser kann das leider nicht.</b> Bitte Chrome oder Edge am Computer verwenden.</span>
+            <span slot="not-allowed" data-t="notall"><b>Nur über https möglich.</b></span>
+          </esp-web-install-button>
+        </div>
+        <div class="dl-opt rot rv">
+          <h3 data-t="neu_h">🧹 Neuinstallation</h3>
+          <p data-t="cam_neu_p">Speicher komplett löschen und neu aufspielen – für <b>neue Kameras</b> oder wenn gar nichts mehr geht. <b>Gespeicherte WLANs sind danach weg.</b></p>
+          <esp-web-install-button manifest="https://prod-byte.github.io/ESPCam/manifest-neu.json">
+            <button slot="activate" data-t="neu_btn">🗑️ Löschen &amp; neu installieren</button>
+            <span slot="unsupported" data-t="unsup"><b>Dieser Browser kann das leider nicht.</b> Bitte Chrome oder Edge am Computer verwenden.</span>
+            <span slot="not-allowed" data-t="notall"><b>Nur über https möglich.</b></span>
+          </esp-web-install-button>
+        </div>
+      </div>
+      <ol class="dl-schritte">
+        <li class="rv" data-t="cam_s1"><b>Kamera anschließen.</b> ESP32-CAM auf das <b>ESP32-CAM-MB</b>-Board stecken, per USB mit dem Computer verbinden und <b>Chrome</b> oder <b>Edge</b> öffnen.</li>
+        <li class="rv" data-t="cam_s2"><b>Anschluss auswählen.</b> Meist „USB-SERIAL CH340“.</li>
+        <li class="rv" data-t="cam_s3"><b>Kein Anschluss?</b> Am MB-Board <b>IO0</b> gedrückt halten, kurz <b>RST</b> an der Kamera drücken, IO0 loslassen – nochmal versuchen.</li>
+        <li class="rv" data-t="cam_s4"><b>Neu starten.</b> Nach dem Aufspielen einmal <b>RST</b> drücken.</li>
+        <li class="rv" data-t="cam_s5"><b>WLAN einrichten</b> (nur beim ersten Mal): Mit dem Handy ins WLAN <b>„ESPCam-Setup“</b>, dein WLAN antippen, Passwort eingeben.</li>
+      </ol>
+      <div class="dl-auto rv">
+        <div>
+          <h3 data-t="cam_auto_h">📷 Zur Kamera</h3>
+          <p data-t="cam_auto_p">Ist die Kamera im WLAN, öffnest du Livebild und Einstellungen im Browser unter <code>http://espcam.local</code> – Handy oder PC müssen im selben WLAN sein. Quellcode und Anleitung: <a href="https://github.com/ProD-byte/ESPCam" target="_blank" rel="noopener">GitHub</a>.</p>
+        </div>
+        <a class="dl-btn" href="http://espcam.local" target="_blank" rel="noopener" data-t="cam_auto_btn">Kamera öffnen →</a>
+      </div>
+    </div>
+  </section>
+
+<!--
+  Übersetzungen (in T.en / T.es / T.fr des Sprach-Skripts ergänzen):
+
+  en: cam_h2:'Install <span class="dl-grad">ESPCam</span>',
+      cam_sub:'Wi-Fi camera with live view in the browser – connect the AI-Thinker ESP32-CAM via USB and flash it right here.',
+      cam_upd_p:'Install new firmware – <b>saved Wi-Fi networks are kept.</b>',
+      cam_neu_p:'Erase everything and install from scratch – for <b>new cameras</b> or when nothing works anymore. <b>Saved Wi-Fi networks will be gone.</b>',
+      cam_s1..cam_s5, cam_auto_h, cam_auto_p, cam_auto_btn (siehe Seite)
+  Build-Nummer: fetch('https://prod-byte.github.io/ESPCam/version.json') → #dl-ver-cam
+-->

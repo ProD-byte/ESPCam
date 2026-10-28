@@ -79,6 +79,8 @@ jobs:
           cp ausgabe/espcam-komplett.bin seite/
           cp ausgabe/teile/* seite/
           sed -i "s/__VERSION__/Build ${GITHUB_RUN_NUMBER} (${GITHUB_SHA::7})/" seite/manifest-*.json seite/index.html
+          # version.json: daraus zeigt daveslab.de/basteln die aktuelle Build-Nummer
+          echo "{\"build\":${GITHUB_RUN_NUMBER},\"commit\":\"${GITHUB_SHA::7}\"}" > seite/version.json
           ls -la seite
 
       - name: Flasher-Seite hochladen
