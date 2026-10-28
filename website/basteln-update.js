@@ -15,7 +15,7 @@ function espcamEinbauen(raw) {
   ersetze('h1', 'Roboauto <span class="dl-grad">Flasher</span></h1>', 'DavesLab <span class="dl-grad">Flasher</span></h1>');
   ersetze('hero_p', /(data-t="hero_p">)[^<]*(<\/p>)/,
     '$1Firmware für meine Bastelprojekte direkt aus dem Browser aufspielen – ohne Programmieren, ohne Installation.$2\n' +
-    '      <p class="rv" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px"><a class="dl-btn" href="#flasher">🚗 Roboauto</a><a class="dl-btn" href="#espcam">📷 ESPCam</a></p>');
+    '      <p class="rv" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:22px"><a class="dl-btn" href="#flasher">🚗 Roboauto</a><a class="dl-btn" href="#espcam">📷 ESPCam</a></p>');
   ersetze('h2_inst', /(data-t="h2_inst">)[\s\S]*?(<\/h2>)/, '$1Roboauto <span class="dl-grad">installieren</span>$2');
 
   // --- ESPCam-Abschnitt vor dem Fuß ---
@@ -71,7 +71,7 @@ const ESPCAM_ABSCHNITT = `  <section class="dl-sec" id="espcam">
           </esp-web-install-button>
         </div>
       </div>
-      <ol class="dl-schritte">
+      <ol class="dl-schritte" style="margin-top:28px">
         <li class="rv" data-t="cam_s1"><b>Kamera anschließen.</b> ESP32-CAM auf das <b>ESP32-CAM-MB</b>-Board stecken, per USB mit dem Computer verbinden und <b>Chrome</b> oder <b>Edge</b> öffnen.</li>
         <li class="rv" data-t="cam_s2"><b>Anschluss auswählen.</b> Meist „USB-SERIAL CH340“.</li>
         <li class="rv" data-t="cam_s3"><b>Kein Anschluss?</b> Am MB-Board <b>IO0</b> gedrückt halten, kurz <b>RST</b> an der Kamera drücken, IO0 loslassen – nochmal versuchen.</li>
