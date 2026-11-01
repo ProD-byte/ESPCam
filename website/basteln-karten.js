@@ -54,7 +54,7 @@ var KARTEN = `<div class="dl-projekte rv" id="projekte">
         ${karte('xiao', 'xiao', '🎥', 'Roboauto XIAO', 'Das Roboauto mit Live-Kamera, Mikrofon und SD-Karte.', 'XIAO ESP32S3 Sense')}
         ${karte('app', 'app', '📱', 'Roboauto-App', 'Fahren per Bluetooth oder WLAN – für Android.', 'Android 8+')}
         ${karte('espcam', 'cam', '📷', 'ESPCam', 'WLAN-Kamera mit Livebild im Browser.', 'AI-Thinker ESP32-CAM')}
-        ${karte('wetter', 'wetter', '🌦️', 'Wetterstation', 'Animiertes Wetter für deinen Ort auf dem Mini-Display.', 'LILYGO T-Display')}
+        ${karte('wetter', 'wetter', '🌦️', 'Wetterstation', 'Animiertes Wetter für deinen Ort auf dem Mini-Display.', 'LILYGO T-Display-S3')}
       </div>`;
 
 var KARTEN_STIL = `/* ---- Projekt-Karten: Uebersicht oben, immer nur ein Projekt aufgeklappt ---- */
